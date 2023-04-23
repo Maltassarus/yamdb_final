@@ -5,10 +5,11 @@ from django.db import models
 
 class User(AbstractUser):
 
-    class Role(models.TextChoices):
-        USER = 'user', ('Пользователь')
-        MODERATOR = 'moderator', ('Модератор')
-        ADMIN = 'admin', ('Администратор')
+    ROLES = (
+        ('user', 'Пользователь'),
+        ('moderator', 'Модератор'),
+        ('admin', 'Администратор')
+    )
 
     username = models.CharField(
         'username',
@@ -30,18 +31,17 @@ class User(AbstractUser):
     role = models.CharField(
         'Роль',
         max_length=15,
-        choices=Role.choices,
-        default=Role.USER,
+        default=ROLES[1],
     )
     bio = models.TextField('О себе', blank=True)
 
     @property
     def is_admin(self):
-        return self.role == self.Role.ADMIN
+        return self.role == self.ROLES[2]
 
     @property
     def is_moderator(self):
-        return self.role == self.Role.MODERATOR
+        return self.role == self.ROLES[1]
 
     class Meta:
         constraints = [
