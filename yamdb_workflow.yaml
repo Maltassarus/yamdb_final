@@ -45,7 +45,6 @@ jobs:
           context: api_yamdb/
           push: true
           tags: maltassarus/yamdb_final:latest
-          file: api_yamdb/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
