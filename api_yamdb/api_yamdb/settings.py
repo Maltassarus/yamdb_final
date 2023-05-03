@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'reviews.apps.ReviewsConfig',
     'rest_framework',
     'django_filters',
+    'api.apps.ApiConfig',
 ]
 
 MIDDLEWARE = [
@@ -76,7 +77,7 @@ DATABASES = {
         'NAME': os.getenv('DB_NAME', default='postgres'),
         'USER': os.getenv('POSTGRES_USER', default='postgres'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='12345678'),
-        'HOST': os.getenv('DB_HOST', default='postgres'),
+        'HOST': os.getenv('DB_HOST', default='localhost'),
         'PORT': os.getenv('DB_PORT', default='5432')
     }
 }
